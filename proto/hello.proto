@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package proto;
+
+service Demo {
+    rpc SayHello(SayHelloRequest) returns (SayHelloResponse) {};
+    rpc ListTag(ListTagRequest) returns (ListTagResponse) {};
+}
+
+message SayHelloRequest {
+    string msg = 1;
+}
+
+message SayHelloResponse {
+    string msg = 1;
+}
+
+message ListTagRequest {
+    int32 tag_id = 1;
+    int32 page_index = 2;
+    int32 page_size = 3;
+}
+
+message ListTagResponse {
+    message Data {
+        int32  tag_id = 1;
+        string tag_name = 2;
+        int32  tag_status = 3;
+    }
+    repeated Data item = 1;
+}
